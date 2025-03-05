@@ -13,7 +13,14 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreen extends State<QuestionsScreen> {
-  void onTap() {}
+  var currentQuestionIndex = 0;
+  void onTap() {
+    if (currentQuestionIndex < questions.length) {
+      setState(() {
+        currentQuestionIndex++;
+      });
+    }
+  }
 
   @override
   Widget build(context) {
