@@ -10,7 +10,10 @@ class ResultsScreen extends StatelessWidget {
 
   final void Function() restartQuiz;
 
-  List<Map<String, Object>> getSummary() {
+// This getter property generates a summary of the user's answers.
+// It creates a list of maps where each map contains the question index, the question text,
+// the correct answer, and the user's answer.
+  List<Map<String, Object>> get summaryData {
     List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < chosenAnswers.length; i++) {
@@ -30,7 +33,7 @@ class ResultsScreen extends StatelessWidget {
   @override
   Widget build(context) {
     final numTotalQuestions = questions.length;
-    final numCorrectAnswer = getSummary()
+    final numCorrectAnswer = summaryData
         .where(
           (data) => data['correct_answer'] == data['user_answer'],
         )
@@ -55,7 +58,7 @@ class ResultsScreen extends StatelessWidget {
               height: 30,
             ),
             // sdjflksjdf
-            QuestionSummary(getSummary()),
+            QuestionSummary(summaryData),
             SizedBox(
               height: 30,
             ),
